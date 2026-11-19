@@ -1,0 +1,14 @@
+{
+  "name": "aula-5-frameworks-front-end",
+  "version": "1.0.0",
+  "description": "API REST com Express - Aula 05",
+  "main": "api.js",
+  "type": "module",
+  "scripts": {
+    "start": "node api.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}
