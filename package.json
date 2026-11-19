@@ -1,13 +1,14 @@
 {
   "name": "aula-5-frameworks-front-end",
   "version": "1.0.0",
-  "description": "API REST com Express - Aula 05",
-  "main": "api.js",
-  "type": "module",
+  "description": "API REST com Express - CRUD de Notas (Aula 05)",
+  "main": "server.js",
   "scripts": {
-    "start": "node api.js"
+    "start": "node server.js",
+    "api": "node api.js"
   },
   "dependencies": {
+    "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "express": "^4.21.2"
   }

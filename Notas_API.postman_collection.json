@@ -1,0 +1,104 @@
+{
+  "info": {
+    "name": "API de Notas - CRUD (Aula 05)",
+    "description": "Coleção Postman documentando as operações CRUD (Create, Read, Update, Delete) da API de Notas desenvolvida com Node.js e Express.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aula-5-frameworks-front-end.onrender.com",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Listar Todas as Notas (READ - GET)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/notes",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "notes"]
+        },
+        "description": "Retorna a lista completa de notas armazenadas em `data.json`.\n\n**Códigos de Resposta:**\n- `200 OK`: Lista de notas retornada com sucesso em formato JSON (array de objetos)."
+      },
+      "response": []
+    },
+    {
+      "name": "2. Obter Nota por ID (READ - GET /:id)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/notes/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "notes", "1"]
+        },
+        "description": "Busca e retorna uma nota específica pelo seu parâmetro de rota `:id`.\n\n**Parâmetros de Rota:**\n- `id` (string, obrigatório): Identificador único da nota.\n\n**Códigos de Resposta:**\n- `200 OK`: Nota encontrada e retornada em JSON.\n- `404 Not Found`: Nenhuma nota encontrada com o ID informado (`{ \"erro\": \"Nota não encontrada\" }`)."
+      },
+      "response": []
+    },
+    {
+      "name": "3. Criar Nova Nota (CREATE - POST)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Estudar Express.js\",\n  \"texto\": \"Revisar rotas CRUD e documentação no Postman\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/notes",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "notes"]
+        },
+        "description": "Cria uma nova nota no arquivo `data.json`. O servidor gera automaticamente o `id` (`Date.now().toString()`) e o timestamp `criadoEm`.\n\n**Corpo da Requisição (JSON):**\n- `titulo` (string, obrigatório): Título da nota.\n- `texto` (string, obrigatório): Conteúdo/descrição da nota.\n\n**Códigos de Resposta:**\n- `201 Created` / `200 OK`: Nota criada com sucesso; retorna o objeto completo da nova nota."
+      },
+      "response": []
+    },
+    {
+      "name": "4. Atualizar Nota Existente (UPDATE - PUT /:id)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Lembretes Atualizados\",\n  \"texto\": \"Comprar leite, pão e café\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/notes/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "notes", "1"]
+        },
+        "description": "Atualiza os campos `titulo` e `texto` de uma nota existente identificada pelo parâmetro `:id`.\n\n**Parâmetros de Rota:**\n- `id` (string, obrigatório): ID da nota que será atualizada.\n\n**Corpo da Requisição (JSON):**\n- `titulo` (string, obrigatório): Novo título da nota.\n- `texto` (string, obrigatório): Novo texto da nota.\n\n**Códigos de Resposta:**\n- `200 OK`: Nota atualizada com sucesso; retorna o objeto atualizado.\n- `404 Not Found`: Nota não encontrada (`{ \"erro\": \"Nota não encontrada\" }`)."
+      },
+      "response": []
+    },
+    {
+      "name": "5. Excluir Nota (DELETE - DELETE /:id)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/notes/2",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "notes", "2"]
+        },
+        "description": "Remove uma nota específica do arquivo `data.json` utilizando seu `:id`.\n\n**Parâmetros de Rota:**\n- `id` (string, obrigatório): ID da nota a ser excluída.\n\n**Códigos de Resposta:**\n- `200 OK` / `204 No Content`: Nota removida com sucesso (`{ \"mensagem\": \"Nota removida\" }`)."
+      },
+      "response": []
+    }
+  ]
+}
